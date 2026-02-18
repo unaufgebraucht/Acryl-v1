@@ -6475,15 +6475,16 @@ function Compkiller.new(Config : Window)
 		Property = 'TextColor3'
 	});
 
-	-- Minimize and Close buttons (top-left corner)
+	-- Minimize and Close buttons (top-right corner)
 	local MinimizeButton = Instance.new("ImageButton")
 	local CloseButton = Instance.new("ImageButton")
 
 	MinimizeButton.Name = Compkiller:_RandomString()
 	MinimizeButton.Parent = MainFrame
+	MinimizeButton.AnchorPoint = Vector2.new(1, 0)
 	MinimizeButton.BackgroundTransparency = 1.000
 	MinimizeButton.BorderSizePixel = 0
-	MinimizeButton.Position = UDim2.new(0, 8, 0, 8)
+	MinimizeButton.Position = UDim2.new(1, -8, 0, 8)
 	MinimizeButton.Size = UDim2.new(0, 16, 0, 16)
 	MinimizeButton.ZIndex = 160
 	MinimizeButton.Image = Compkiller:_GetIcon("lucide-minimize")
@@ -6497,9 +6498,10 @@ function Compkiller.new(Config : Window)
 
 	CloseButton.Name = Compkiller:_RandomString()
 	CloseButton.Parent = MainFrame
+	CloseButton.AnchorPoint = Vector2.new(1, 0)
 	CloseButton.BackgroundTransparency = 1.000
 	CloseButton.BorderSizePixel = 0
-	CloseButton.Position = UDim2.new(0, 28, 0, 8)
+	CloseButton.Position = UDim2.new(1, -28, 0, 8)
 	CloseButton.Size = UDim2.new(0, 16, 0, 16)
 	CloseButton.ZIndex = 160
 	CloseButton.Image = Compkiller:_GetIcon("lucide-x")
@@ -6524,6 +6526,41 @@ function Compkiller.new(Config : Window)
 	end)
 	CloseButton.MouseLeave:Connect(function()
 		Compkiller:_Animation(CloseButton, TweenInfo.new(0.12), { ImageTransparency = 0 })
+	end)
+
+	-- Click handlers with animations
+	MinimizeButton.MouseButton1Click:Connect(function()
+		if WindowArgs.IsOpen then
+			Compkiller:_Animation(MainFrame, TweenInfo.new(0.18, Enum.EasingStyle.Quint, Enum.EasingDirection.InOut), {
+				BackgroundTransparency = 1,
+				Size = UDim2.new(0, 200, 0, 40)
+			})
+
+			task.delay(0.18, function()
+				WindowArgs:Toggle(false)
+			end)
+		else
+			WindowArgs:Toggle(true)
+		end
+	end)
+
+	CloseButton.MouseButton1Click:Connect(function()
+		Compkiller:_Animation(MainFrame, TweenInfo.new(0.22, Enum.EasingStyle.Quint, Enum.EasingDirection.InOut), {
+			BackgroundTransparency = 1,
+			Size = UDim2.new(0, 0, 0, 0)
+		})
+
+		task.delay(0.22, function()
+			pcall(function()
+				CompKiller:Destroy()
+				for i,v in ipairs(Compkiller.Windows) do
+					if v == CompKiller then
+						table.remove(Compkiller.Windows, i)
+						break
+					end
+				end
+			end)
+		end)
 	end)
 
 	-- Click handlers: minimize toggles UI; close destroys the GUI
