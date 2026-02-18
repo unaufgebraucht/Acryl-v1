@@ -6311,16 +6311,7 @@ function Compkiller.new(Config : Window)
 		Keybind = "Insert",
 		Logo = Compkiller.Logo;
 		Scale = Compkiller.Scale.Window,
-		TextSize = 15,
-
-		-- Key system options
-		KeySystem = false, -- if true, a key prompt will appear before the UI fully loads
-		KeyEndpoint = "", -- optional remote endpoint to validate keys (GET with ?key=... or full URL)
-		ValidKeys = {}, -- optional local list of valid keys (exact match)
-		KeyPromptTitle = "Enter Key",
-		KeyPromptMessage = "Please enter your access key to unlock the script.",
-		KeyHelpURL = "", -- optional URL shown as instruction (e.g. Linkvertise link)
-		KeySave = false -- if true, valid keys may be saved locally (not implemented by default)
+		TextSize = 15
 	});
 
 	local TabHover = Compkiller.__SIGNAL(false);
