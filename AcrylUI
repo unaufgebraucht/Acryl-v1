@@ -361,20 +361,21 @@ Compkiller.Colors = {
     Highlight = Color3.fromRGB(255, 255, 255),   
     Toggle = Color3.fromRGB(200, 200, 200),     
     Risky = Color3.fromRGB(255, 80, 80),        
-    
+
     BGDBColor = Color3.fromRGB(18, 18, 18),     
-    BlockColor = Color3.fromRGB(25, 25, 25),      
-    BlockBackground = Color3.fromRGB(32, 32, 32),  
-    
-    StrokeColor = Color3.fromRGB(50, 50, 50),      
-    HighStrokeColor = Color3.fromRGB(70, 70, 70),  
-    
-    DropColor = Color3.fromRGB(28, 28, 28),      
-    MouseEnter = Color3.fromRGB(45, 45, 45),       
-    
-    SwitchColor = Color3.fromRGB(255, 255, 255),   
-    LineColor = Color3.fromRGB(80, 80, 80),         
+    BlockColor = Color3.fromRGB(22, 22, 22),          -- Button-Hintergrund dunkler
+    BlockBackground = Color3.fromRGB(28, 28, 28),     -- Allgemeiner Hintergrund dunkler
+
+    StrokeColor = Color3.fromRGB(45, 45, 45),         -- Etwas dunkler für besseren Kontrast
+    HighStrokeColor = Color3.fromRGB(65, 65, 65),     
+
+    DropColor = Color3.fromRGB(24, 24, 24),           -- Dropdown dunkler
+    MouseEnter = Color3.fromRGB(40, 40, 40),          -- Hover sichtbar, aber nicht zu hell
+
+    SwitchColor = Color3.fromRGB(255, 255, 255),      
+    LineColor = Color3.fromRGB(75, 75, 75),           
 };
+
 
 Compkiller.Elements = {
 	Highlight = {},
