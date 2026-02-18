@@ -6125,102 +6125,107 @@ function Compkiller:GetTheme()
 end;
 
 function Compkiller:SetTheme(name)
-elseif name == "Light" then
-    Compkiller.Colors = {
-        Highlight = Color3.fromRGB(0, 120, 255),
-        Toggle = Color3.fromRGB(0, 100, 220),
-        Risky = Color3.fromRGB(255, 70, 70),
+    if name == "Light" then
+        Compkiller.Colors = {
+            Highlight = Color3.fromRGB(0, 120, 255),
+            Toggle = Color3.fromRGB(0, 100, 220),
+            Risky = Color3.fromRGB(255, 70, 70),
 
-        BGDBColor = Color3.fromRGB(235, 235, 235),
-        BlockColor = Color3.fromRGB(245, 245, 245),
-        BlockBackground = Color3.fromRGB(255, 255, 255),
+            BGDBColor = Color3.fromRGB(235, 235, 235),
+            BlockColor = Color3.fromRGB(245, 245, 245),
+            BlockBackground = Color3.fromRGB(255, 255, 255),
 
-        StrokeColor = Color3.fromRGB(200, 200, 200),
-        HighStrokeColor = Color3.fromRGB(180, 180, 180),
+            StrokeColor = Color3.fromRGB(200, 200, 200),
+            HighStrokeColor = Color3.fromRGB(180, 180, 180),
 
-        DropColor = Color3.fromRGB(240, 240, 240),
-        MouseEnter = Color3.fromRGB(225, 225, 225),
+            DropColor = Color3.fromRGB(240, 240, 240),
+            MouseEnter = Color3.fromRGB(225, 225, 225),
 
-        SwitchColor = Color3.fromRGB(0, 0, 0),
-        LineColor = Color3.fromRGB(160, 160, 160),
-    };
-elseif name == "Default" then
-    Compkiller.Colors = {
-        Highlight = Color3.fromRGB(255, 255, 255),      -- Weißer Akzent
-        Toggle = Color3.fromRGB(200, 200, 200),         -- Helles Grau
-        Risky = Color3.fromRGB(255, 80, 80),            -- Warnfarbe
+            SwitchColor = Color3.fromRGB(0, 0, 0),
+            LineColor = Color3.fromRGB(160, 160, 160),
+        };
 
-        BGDBColor = Color3.fromRGB(18, 18, 18),         -- Haupt-Hintergrund (sehr dunkel)
-        BlockColor = Color3.fromRGB(22, 22, 22),        -- Button / Block (dunkler gemacht)
-        BlockBackground = Color3.fromRGB(28, 28, 28),   -- Sekundärer Hintergrund
+    elseif name == "Default" then
+        Compkiller.Colors = {
+            Highlight = Color3.fromRGB(255, 255, 255),
+            Toggle = Color3.fromRGB(200, 200, 200),
+            Risky = Color3.fromRGB(255, 80, 80),
 
-        StrokeColor = Color3.fromRGB(45, 45, 45),       -- Rahmen
-        HighStrokeColor = Color3.fromRGB(65, 65, 65),   -- Hover-Rahmen
+            BGDBColor = Color3.fromRGB(18, 18, 18),
+            BlockColor = Color3.fromRGB(22, 22, 22),
+            BlockBackground = Color3.fromRGB(28, 28, 28),
 
-        DropColor = Color3.fromRGB(24, 24, 24),         -- Dropdown
-        MouseEnter = Color3.fromRGB(40, 40, 40),        -- Hover-Effekt (nicht zu hell)
+            StrokeColor = Color3.fromRGB(45, 45, 45),
+            HighStrokeColor = Color3.fromRGB(65, 65, 65),
 
-        SwitchColor = Color3.fromRGB(255, 255, 255),    -- Switch / Toggle
-        LineColor = Color3.fromRGB(75, 75, 75),         -- Linien
-    };
-elseif name == "Neon" then
-    Compkiller.Colors = {
-        Highlight = Color3.fromRGB(0, 255, 180),     -- Neon Grün/Türkis
-        Toggle = Color3.fromRGB(0, 220, 160),
-        Risky = Color3.fromRGB(255, 60, 60),
+            DropColor = Color3.fromRGB(24, 24, 24),
+            MouseEnter = Color3.fromRGB(40, 40, 40),
 
-        BGDBColor = Color3.fromRGB(10, 10, 10),
-        BlockColor = Color3.fromRGB(18, 18, 18),
-        BlockBackground = Color3.fromRGB(25, 25, 25),
+            SwitchColor = Color3.fromRGB(255, 255, 255),
+            LineColor = Color3.fromRGB(75, 75, 75),
+        };
 
-        StrokeColor = Color3.fromRGB(40, 40, 40),
-        HighStrokeColor = Color3.fromRGB(60, 60, 60),
+    elseif name == "Neon" then
+        Compkiller.Colors = {
+            Highlight = Color3.fromRGB(0, 255, 180),
+            Toggle = Color3.fromRGB(0, 220, 160),
+            Risky = Color3.fromRGB(255, 60, 60),
 
-        DropColor = Color3.fromRGB(20, 20, 20),
-        MouseEnter = Color3.fromRGB(35, 35, 35),
+            BGDBColor = Color3.fromRGB(10, 10, 10),
+            BlockColor = Color3.fromRGB(18, 18, 18),
+            BlockBackground = Color3.fromRGB(25, 25, 25),
 
-        SwitchColor = Color3.fromRGB(0, 255, 180),
-        LineColor = Color3.fromRGB(70, 70, 70),
-    };
-elseif name == "Midnight" then
-    Compkiller.Colors = {
-        Highlight = Color3.fromRGB(180, 180, 255),   -- leicht bläuliches Weiß
-        Toggle = Color3.fromRGB(150, 150, 255),
-        Risky = Color3.fromRGB(255, 80, 80),
+            StrokeColor = Color3.fromRGB(40, 40, 40),
+            HighStrokeColor = Color3.fromRGB(60, 60, 60),
 
-        BGDBColor = Color3.fromRGB(8, 8, 12),
-        BlockColor = Color3.fromRGB(14, 14, 18),
-        BlockBackground = Color3.fromRGB(20, 20, 25),
+            DropColor = Color3.fromRGB(20, 20, 20),
+            MouseEnter = Color3.fromRGB(35, 35, 35),
 
-        StrokeColor = Color3.fromRGB(30, 30, 35),
-        HighStrokeColor = Color3.fromRGB(50, 50, 55),
+            SwitchColor = Color3.fromRGB(0, 255, 180),
+            LineColor = Color3.fromRGB(70, 70, 70),
+        };
 
-        DropColor = Color3.fromRGB(12, 12, 16),
-        MouseEnter = Color3.fromRGB(25, 25, 30),
+    elseif name == "Midnight" then
+        Compkiller.Colors = {
+            Highlight = Color3.fromRGB(180, 180, 255),
+            Toggle = Color3.fromRGB(150, 150, 255),
+            Risky = Color3.fromRGB(255, 80, 80),
 
-        SwitchColor = Color3.fromRGB(200, 200, 255),
-        LineColor = Color3.fromRGB(60, 60, 70),
-    };
-elseif name == "SoftGray" then
-    Compkiller.Colors = {
-        Highlight = Color3.fromRGB(255, 255, 255),
-        Toggle = Color3.fromRGB(220, 220, 220),
-        Risky = Color3.fromRGB(255, 90, 90),
+            BGDBColor = Color3.fromRGB(8, 8, 12),
+            BlockColor = Color3.fromRGB(14, 14, 18),
+            BlockBackground = Color3.fromRGB(20, 20, 25),
 
-        BGDBColor = Color3.fromRGB(200, 200, 200),
-        BlockColor = Color3.fromRGB(215, 215, 215),
-        BlockBackground = Color3.fromRGB(230, 230, 230),
+            StrokeColor = Color3.fromRGB(30, 30, 35),
+            HighStrokeColor = Color3.fromRGB(50, 50, 55),
 
-        StrokeColor = Color3.fromRGB(170, 170, 170),
-        HighStrokeColor = Color3.fromRGB(150, 150, 150),
+            DropColor = Color3.fromRGB(12, 12, 16),
+            MouseEnter = Color3.fromRGB(25, 25, 30),
 
-        DropColor = Color3.fromRGB(210, 210, 210),
-        MouseEnter = Color3.fromRGB(190, 190, 190),
+            SwitchColor = Color3.fromRGB(200, 200, 255),
+            LineColor = Color3.fromRGB(60, 60, 70),
+        };
 
-        SwitchColor = Color3.fromRGB(40, 40, 40),
-        LineColor = Color3.fromRGB(140, 140, 140),
-    };
-	end;
+    elseif name == "SoftGray" then
+        Compkiller.Colors = {
+            Highlight = Color3.fromRGB(255, 255, 255),
+            Toggle = Color3.fromRGB(220, 220, 220),
+            Risky = Color3.fromRGB(255, 90, 90),
+
+            BGDBColor = Color3.fromRGB(200, 200, 200),
+            BlockColor = Color3.fromRGB(215, 215, 215),
+            BlockBackground = Color3.fromRGB(230, 230, 230),
+
+            StrokeColor = Color3.fromRGB(170, 170, 170),
+            HighStrokeColor = Color3.fromRGB(150, 150, 150),
+
+            DropColor = Color3.fromRGB(210, 210, 210),
+            MouseEnter = Color3.fromRGB(190, 190, 190),
+
+            SwitchColor = Color3.fromRGB(40, 40, 40),
+            LineColor = Color3.fromRGB(140, 140, 140),
+        };
+    end
+end
 
 	Compkiller:RefreshCurrentColor()
 end;
