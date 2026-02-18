@@ -342,7 +342,7 @@ local CurrentCamera: Camera? = cloneref(workspace.CurrentCamera);
 
 local Compkiller = {
 	Version = '1.0',
-	Logo = "rbxassetid://120245531583106",
+	Logo = "rbxassetid://112928258329117",
 	Windows = {},
 	Scale = {
 		Window = UDim2.new(0, 485,0, 565),
@@ -6140,21 +6140,25 @@ function Compkiller:SetTheme(name)
 			["Toggle"] = Color3.new(0, 0.613793, 0.220119),
 			HighStrokeColor = Color3.new(0, 0.241379, 0.186445),
 		};
-	elseif name == "Default" then
-		Compkiller.Colors = {
-			Highlight = Color3.fromRGB(17, 238, 253),
-			Toggle = Color3.fromRGB(14, 203, 213),
-			Risky = Color3.fromRGB(251, 255, 39),
-			BGDBColor = Color3.fromRGB(22, 24, 29),
-			BlockColor = Color3.fromRGB(28, 29, 34),
-			StrokeColor = Color3.fromRGB(37, 38, 43),
-			SwitchColor = Color3.fromRGB(255, 255, 255),
-			DropColor = Color3.fromRGB(33, 35, 39),
-			MouseEnter = Color3.fromRGB(55, 58, 65),
-			BlockBackground = Color3.fromRGB(39, 40, 47),
-			LineColor = Color3.fromRGB(65, 65, 65),
-			HighStrokeColor = Color3.fromRGB(55, 56, 63),
-		};
+elseif name == "Default" then
+    Compkiller.Colors = {
+        Highlight = Color3.fromRGB(255, 255, 255),      -- Weißer Akzent
+        Toggle = Color3.fromRGB(200, 200, 200),         -- Helles Grau
+        Risky = Color3.fromRGB(255, 80, 80),            -- Warnfarbe
+
+        BGDBColor = Color3.fromRGB(18, 18, 18),         -- Haupt-Hintergrund (sehr dunkel)
+        BlockColor = Color3.fromRGB(22, 22, 22),        -- Button / Block (dunkler gemacht)
+        BlockBackground = Color3.fromRGB(28, 28, 28),   -- Sekundärer Hintergrund
+
+        StrokeColor = Color3.fromRGB(45, 45, 45),       -- Rahmen
+        HighStrokeColor = Color3.fromRGB(65, 65, 65),   -- Hover-Rahmen
+
+        DropColor = Color3.fromRGB(24, 24, 24),         -- Dropdown
+        MouseEnter = Color3.fromRGB(40, 40, 40),        -- Hover-Effekt (nicht zu hell)
+
+        SwitchColor = Color3.fromRGB(255, 255, 255),    -- Switch / Toggle
+        LineColor = Color3.fromRGB(75, 75, 75),         -- Linien
+    };
 	elseif name == "Dark Blue" then
 		Compkiller.Colors = {
 			["BGDBColor"] = Color3.new(0.0393817, 0.0754204, 0.165517),
