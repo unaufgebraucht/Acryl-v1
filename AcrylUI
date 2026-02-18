@@ -6125,102 +6125,86 @@ function Compkiller:GetTheme()
 end;
 
 function Compkiller:SetTheme(name)
-    if name == "Light" then
-        Compkiller.Colors = {
-            Highlight = Color3.fromRGB(0, 120, 255),
-            Toggle = Color3.fromRGB(0, 100, 220),
-            Risky = Color3.fromRGB(255, 70, 70),
+	if name == "Dark Green" then
+		Compkiller.Colors = {
+			["BGDBColor"] = Color3.new(0.0429964, 0.110345, 0.0727226),
+			["BlockBackground"] = Color3.new(0.159287, 0.234483, 0.201811),
+			["BlockColor"] = Color3.new(0, 0.137931, 0.0951249),
+			["DropColor"] = Color3.new(0, 0.227586, 0.100452),
+			["Highlight"] = Color3.new(0.0666667, 0.992157, 0.628343),
+			["LineColor"] = Color3.new(0.263258, 0.372414, 0.329504),
+			["MouseEnter"] = Color3.new(0, 0.841379, 0.51063),
+			["Risky"] = Color3.new(1, 0.398296, 0.152941),
+			["StrokeColor"] = Color3.new(0.132342, 0.241379, 0.198517),
+			["SwitchColor"] = Color3.new(0.927586, 1, 0.980523),
+			["Toggle"] = Color3.new(0, 0.613793, 0.220119),
+			HighStrokeColor = Color3.new(0, 0.241379, 0.186445),
+		};
+elseif name == "Default" then
+    Compkiller.Colors = {
+        Highlight = Color3.fromRGB(255, 255, 255),      -- Weißer Akzent
+        Toggle = Color3.fromRGB(200, 200, 200),         -- Helles Grau
+        Risky = Color3.fromRGB(255, 80, 80),            -- Warnfarbe
 
-            BGDBColor = Color3.fromRGB(235, 235, 235),
-            BlockColor = Color3.fromRGB(245, 245, 245),
-            BlockBackground = Color3.fromRGB(255, 255, 255),
+        BGDBColor = Color3.fromRGB(18, 18, 18),         -- Haupt-Hintergrund (sehr dunkel)
+        BlockColor = Color3.fromRGB(22, 22, 22),        -- Button / Block (dunkler gemacht)
+        BlockBackground = Color3.fromRGB(28, 28, 28),   -- Sekundärer Hintergrund
 
-            StrokeColor = Color3.fromRGB(200, 200, 200),
-            HighStrokeColor = Color3.fromRGB(180, 180, 180),
+        StrokeColor = Color3.fromRGB(45, 45, 45),       -- Rahmen
+        HighStrokeColor = Color3.fromRGB(65, 65, 65),   -- Hover-Rahmen
 
-            DropColor = Color3.fromRGB(240, 240, 240),
-            MouseEnter = Color3.fromRGB(225, 225, 225),
+        DropColor = Color3.fromRGB(24, 24, 24),         -- Dropdown
+        MouseEnter = Color3.fromRGB(40, 40, 40),        -- Hover-Effekt (nicht zu hell)
 
-            SwitchColor = Color3.fromRGB(0, 0, 0),
-            LineColor = Color3.fromRGB(160, 160, 160),
-        }
-    elseif name == "Default" then
-        Compkiller.Colors = {
-            Highlight = Color3.fromRGB(255, 255, 255),
-            Toggle = Color3.fromRGB(200, 200, 200),
-            Risky = Color3.fromRGB(255, 80, 80),
-
-            BGDBColor = Color3.fromRGB(18, 18, 18),
-            BlockColor = Color3.fromRGB(22, 22, 22),
-            BlockBackground = Color3.fromRGB(28, 28, 28),
-
-            StrokeColor = Color3.fromRGB(45, 45, 45),
-            HighStrokeColor = Color3.fromRGB(65, 65, 65),
-
-            DropColor = Color3.fromRGB(24, 24, 24),
-            MouseEnter = Color3.fromRGB(40, 40, 40),
-
-            SwitchColor = Color3.fromRGB(255, 255, 255),
-            LineColor = Color3.fromRGB(75, 75, 75),
-        }
-    elseif name == "Neon" then
-        Compkiller.Colors = {
-            Highlight = Color3.fromRGB(0, 255, 180),
-            Toggle = Color3.fromRGB(0, 220, 160),
-            Risky = Color3.fromRGB(255, 60, 60),
-
-            BGDBColor = Color3.fromRGB(10, 10, 10),
-            BlockColor = Color3.fromRGB(18, 18, 18),
-            BlockBackground = Color3.fromRGB(25, 25, 25),
-
-            StrokeColor = Color3.fromRGB(40, 40, 40),
-            HighStrokeColor = Color3.fromRGB(60, 60, 60),
-
-            DropColor = Color3.fromRGB(20, 20, 20),
-            MouseEnter = Color3.fromRGB(35, 35, 35),
-
-            SwitchColor = Color3.fromRGB(0, 255, 180),
-            LineColor = Color3.fromRGB(70, 70, 70),
-        }
-    elseif name == "Midnight" then
-        Compkiller.Colors = {
-            Highlight = Color3.fromRGB(180, 180, 255),
-            Toggle = Color3.fromRGB(150, 150, 255),
-            Risky = Color3.fromRGB(255, 80, 80),
-
-            BGDBColor = Color3.fromRGB(8, 8, 12),
-            BlockColor = Color3.fromRGB(14, 14, 18),
-            BlockBackground = Color3.fromRGB(20, 20, 25),
-
-            StrokeColor = Color3.fromRGB(30, 30, 35),
-            HighStrokeColor = Color3.fromRGB(50, 50, 55),
-
-            DropColor = Color3.fromRGB(12, 12, 16),
-            MouseEnter = Color3.fromRGB(25, 25, 30),
-
-            SwitchColor = Color3.fromRGB(200, 200, 255),
-            LineColor = Color3.fromRGB(60, 60, 70),
-        }
-    elseif name == "SoftGray" then
-        Compkiller.Colors = {
-            Highlight = Color3.fromRGB(255, 255, 255),
-            Toggle = Color3.fromRGB(220, 220, 220),
-            Risky = Color3.fromRGB(255, 90, 90),
-
-            BGDBColor = Color3.fromRGB(200, 200, 200),
-            BlockColor = Color3.fromRGB(215, 215, 215),
-            BlockBackground = Color3.fromRGB(230, 230, 230),
-
-            StrokeColor = Color3.fromRGB(170, 170, 170),
-            HighStrokeColor = Color3.fromRGB(150, 150, 150),
-
-            DropColor = Color3.fromRGB(210, 210, 210),
-            MouseEnter = Color3.fromRGB(190, 190, 190),
-
-            SwitchColor = Color3.fromRGB(40, 40, 40),
-            LineColor = Color3.fromRGB(140, 140, 140),
-        }
-    end;
+        SwitchColor = Color3.fromRGB(255, 255, 255),    -- Switch / Toggle
+        LineColor = Color3.fromRGB(75, 75, 75),         -- Linien
+    };
+	elseif name == "Dark Blue" then
+		Compkiller.Colors = {
+			["BGDBColor"] = Color3.new(0.0393817, 0.0754204, 0.165517),
+			["BlockBackground"] = Color3.new(0, 0.0618311, 0.172414),
+			["BlockColor"] = Color3.new(0, 0.0172414, 0.103448),
+			["DropColor"] = Color3.new(0, 0.0965518, 0.289655),
+			["HighStrokeColor"] = Color3.new(0, 0.132604, 0.234483),
+			["Highlight"] = Color3.new(0.0666667, 0.781528, 0.992157),
+			["LineColor"] = Color3.new(0, 0.110345, 0.275862),
+			["MouseEnter"] = Color3.new(0, 0.606896, 1),
+			["Risky"] = Color3.new(0.0310345, 0.819572, 1),
+			["StrokeColor"] = Color3.new(0, 0.119857, 0.248276),
+			["SwitchColor"] = Color3.new(1, 1, 1),
+			["Toggle"] = Color3.new(0.054902, 0.463935, 0.835294)
+		}
+	elseif name == "Purple Rose" then
+		Compkiller.Colors = {
+			["BGDBColor"] = Color3.new(0.0459068, 0.030321, 0.117241),
+			["BlockBackground"] = Color3.new(0.156272, 0.119596, 0.324138),
+			["BlockColor"] = Color3.new(0.0948428, 0.0576457, 0.165517),
+			["DropColor"] = Color3.new(0.131034, 0, 0.0813317),
+			["HighStrokeColor"] = Color3.new(0.136259, 0.101237, 0.296552),
+			["Highlight"] = Color3.new(0.992157, 0.0666667, 0.33474),
+			["LineColor"] = Color3.new(0.20872, 0.137408, 0.372414),
+			["MouseEnter"] = Color3.new(0.365517, 0, 0.120999),
+			["Risky"] = Color3.new(1, 0.6086, 0.152941),
+			["StrokeColor"] = Color3.new(0.148499, 0.137836, 0.248276),
+			["SwitchColor"] = Color3.new(1, 1, 1),
+			["Toggle"] = Color3.new(0.835294, 0.054902, 0.248654)
+		}
+	elseif name == "Skeet" then		
+		Compkiller.Colors = {
+			["BGDBColor"] = Color3.new(0.114578, 0.125191, 0.151724),
+			["BlockBackground"] = Color3.new(0.128181, 0.131124, 0.151724),
+			["BlockColor"] = Color3.new(0.0732699, 0.0760008, 0.0896552),
+			["DropColor"] = Color3.new(0.0809037, 0.0861197, 0.0965517),
+			["HighStrokeColor"] = Color3.new(0.119382, 0.1217, 0.137931),
+			["Highlight"] = Color3.new(0, 0.634483, 0.0700119),
+			["LineColor"] = Color3.new(0.151724, 0.151724, 0.151724),
+			["MouseEnter"] = Color3.new(0.134007, 0.141391, 0.158621),
+			["Risky"] = Color3.new(0.984314, 1, 0.152941),
+			["StrokeColor"] = Color3.new(0.0769798, 0.0790924, 0.0896552),
+			["SwitchColor"] = Color3.new(1, 1, 1),
+			["Toggle"] = Color3.new(0, 0.324138, 0.10283)
+		}
+	end;
 
 	Compkiller:RefreshCurrentColor()
 end;
@@ -6490,6 +6474,76 @@ function Compkiller.new(Config : Window)
 		Element = WindowLabel,
 		Property = 'TextColor3'
 	});
+
+	-- Minimize and Close buttons (top-left corner)
+	local MinimizeButton = Instance.new("ImageButton")
+	local CloseButton = Instance.new("ImageButton")
+
+	MinimizeButton.Name = Compkiller:_RandomString()
+	MinimizeButton.Parent = MainFrame
+	MinimizeButton.BackgroundTransparency = 1.000
+	MinimizeButton.BorderSizePixel = 0
+	MinimizeButton.Position = UDim2.new(0, 8, 0, 8)
+	MinimizeButton.Size = UDim2.new(0, 16, 0, 16)
+	MinimizeButton.ZIndex = 160
+	MinimizeButton.Image = Compkiller:_GetIcon("lucide-minimize")
+	MinimizeButton.ImageColor3 = Compkiller.Colors.SwitchColor
+	MinimizeButton.ImageTransparency = 0
+
+	table.insert(Compkiller.Elements.SwitchColor , {
+		Element = MinimizeButton,
+		Property = 'ImageColor3'
+	});
+
+	CloseButton.Name = Compkiller:_RandomString()
+	CloseButton.Parent = MainFrame
+	CloseButton.BackgroundTransparency = 1.000
+	CloseButton.BorderSizePixel = 0
+	CloseButton.Position = UDim2.new(0, 28, 0, 8)
+	CloseButton.Size = UDim2.new(0, 16, 0, 16)
+	CloseButton.ZIndex = 160
+	CloseButton.Image = Compkiller:_GetIcon("lucide-x")
+	CloseButton.ImageColor3 = Compkiller.Colors.SwitchColor
+	CloseButton.ImageTransparency = 0
+
+	table.insert(Compkiller.Elements.SwitchColor , {
+		Element = CloseButton,
+		Property = 'ImageColor3'
+	});
+
+	-- Hover animations
+	MinimizeButton.MouseEnter:Connect(function()
+		Compkiller:_Animation(MinimizeButton, TweenInfo.new(0.12), { ImageTransparency = 0.35 })
+	end)
+	MinimizeButton.MouseLeave:Connect(function()
+		Compkiller:_Animation(MinimizeButton, TweenInfo.new(0.12), { ImageTransparency = 0 })
+	end)
+
+	CloseButton.MouseEnter:Connect(function()
+		Compkiller:_Animation(CloseButton, TweenInfo.new(0.12), { ImageTransparency = 0.35 })
+	end)
+	CloseButton.MouseLeave:Connect(function()
+		Compkiller:_Animation(CloseButton, TweenInfo.new(0.12), { ImageTransparency = 0 })
+	end)
+
+	-- Click handlers: minimize toggles UI; close destroys the GUI
+	MinimizeButton.MouseButton1Click:Connect(function()
+		WindowArgs:_ToggleUI()
+	end)
+
+	CloseButton.MouseButton1Click:Connect(function()
+		-- Destroy root GUI and remove from registry
+		pcall(function()
+			local root = CompKiller
+			root:Destroy()
+			for i,v in ipairs(Compkiller.Windows) do
+				if v == root then
+					table.remove(Compkiller.Windows, i)
+					break
+				end
+			end
+		end)
+	end)
 
 	TabButtons.Name = Compkiller:_RandomString()
 	TabButtons.Parent = TabFrame
