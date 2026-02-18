@@ -6311,7 +6311,16 @@ function Compkiller.new(Config : Window)
 		Keybind = "Insert",
 		Logo = Compkiller.Logo;
 		Scale = Compkiller.Scale.Window,
-		TextSize = 15
+		TextSize = 15,
+
+		-- Key system options
+		KeySystem = false, -- if true, a key prompt will appear before the UI fully loads
+		KeyEndpoint = "", -- optional remote endpoint to validate keys (GET with ?key=... or full URL)
+		ValidKeys = {}, -- optional local list of valid keys (exact match)
+		KeyPromptTitle = "Enter Key",
+		KeyPromptMessage = "Please enter your access key to unlock the script.",
+		KeyHelpURL = "", -- optional URL shown as instruction (e.g. Linkvertise link)
+		KeySave = false -- if true, valid keys may be saved locally (not implemented by default)
 	});
 
 	local TabHover = Compkiller.__SIGNAL(false);
@@ -6401,6 +6410,164 @@ function Compkiller.new(Config : Window)
 	});
 
 	UICorner.Parent = MainFrame
+
+	-- Key prompt overlay (if enabled in Config)
+	if Config.KeySystem then
+		local KeyOverlay = Instance.new("Frame")
+		local Inner = Instance.new("Frame")
+		local Title = Instance.new("TextLabel")
+		local Message = Instance.new("TextLabel")
+		local KeyBox = Instance.new("TextBox")
+		local Submit = Instance.new("TextButton")
+		local Help = Instance.new("TextButton")
+
+		KeyOverlay.Name = Compkiller:_RandomString()
+		KeyOverlay.Parent = CompKiller
+		KeyOverlay.AnchorPoint = Vector2.new(0.5, 0.5)
+		KeyOverlay.BackgroundColor3 = Color3.fromRGB(0,0,0)
+		KeyOverlay.BackgroundTransparency = 0.45
+		KeyOverlay.BorderSizePixel = 0
+		KeyOverlay.Position = UDim2.fromScale(0.5,0.5)
+		KeyOverlay.Size = UDim2.fromScale(1,1)
+		KeyOverlay.ZIndex = 1000
+
+		Inner.Name = Compkiller:_RandomString()
+		Inner.Parent = KeyOverlay
+		Inner.AnchorPoint = Vector2.new(0.5,0.5)
+		Inner.BackgroundColor3 = Compkiller.Colors.BlockBackground or Color3.fromRGB(20,20,20)
+		Inner.BorderSizePixel = 0
+		Inner.Position = UDim2.new(0.5,0.5,0.5,0)
+		Inner.Size = UDim2.new(0, 420, 0, 180)
+		Inner.ZIndex = 1001
+
+		local InnerCorner = Instance.new("UICorner")
+		InnerCorner.Parent = Inner
+
+		Title.Name = Compkiller:_RandomString()
+		Title.Parent = Inner
+		Title.BackgroundTransparency = 1
+		Title.Size = UDim2.new(1, -24, 0, 28)
+		Title.Position = UDim2.new(0, 12, 0, 10)
+		Title.Font = Enum.Font.GothamBold
+		Title.Text = Config.KeyPromptTitle
+		Title.TextColor3 = Compkiller.Colors.SwitchColor
+		Title.TextSize = 20
+		Title.TextXAlignment = Enum.TextXAlignment.Left
+		Title.ZIndex = 1002
+
+		Message.Name = Compkiller:_RandomString()
+		Message.Parent = Inner
+		Message.BackgroundTransparency = 1
+		Message.Size = UDim2.new(1, -24, 0, 40)
+		Message.Position = UDim2.new(0, 12, 0, 42)
+		Message.Font = Enum.Font.Gotham
+		Message.Text = Config.KeyPromptMessage
+		Message.TextColor3 = Compkiller.Colors.SwitchColor
+		Message.TextSize = 14
+		Message.TextWrapped = true
+		Message.TextXAlignment = Enum.TextXAlignment.Left
+		Message.ZIndex = 1002
+
+		KeyBox.Name = Compkiller:_RandomString()
+		KeyBox.Parent = Inner
+		KeyBox.BackgroundColor3 = Compkiller.Colors.DropColor or Color3.fromRGB(30,30,30)
+		KeyBox.BorderSizePixel = 0
+		KeyBox.Position = UDim2.new(0, 12, 0, 92)
+		KeyBox.Size = UDim2.new(1, -24, 0, 30)
+		KeyBox.Font = Enum.Font.Gotham
+		KeyBox.PlaceholderText = "Enter key here"
+		KeyBox.Text = ""
+		KeyBox.TextColor3 = Compkiller.Colors.SwitchColor
+		KeyBox.TextSize = 14
+		KeyBox.ZIndex = 1002
+
+		Submit.Name = Compkiller:_RandomString()
+		Submit.Parent = Inner
+		Submit.BackgroundColor3 = Compkiller.Colors.Highlight or Color3.fromRGB(80,160,120)
+		Submit.BorderSizePixel = 0
+		Submit.Position = UDim2.new(1, -110, 0, 132)
+		Submit.Size = UDim2.new(0, 90, 0, 34)
+		Submit.Font = Enum.Font.GothamBold
+		Submit.Text = "Submit"
+		Submit.TextColor3 = Color3.fromRGB(255,255,255)
+		Submit.TextSize = 14
+		Submit.ZIndex = 1002
+
+		Help.Name = Compkiller:_RandomString()
+		Help.Parent = Inner
+		Help.BackgroundTransparency = 1
+		Help.BorderSizePixel = 0
+		Help.Position = UDim2.new(0, 12, 0, 132)
+		Help.Size = UDim2.new(0, 200, 0, 34)
+		Help.Font = Enum.Font.Gotham
+		Help.Text = Config.KeyHelpURL ~= "" and "Get a key: " .. Config.KeyHelpURL or ""
+		Help.TextColor3 = Compkiller.Colors.SwitchColor
+		Help.TextSize = 14
+		Help.TextWrapped = true
+		Help.ZIndex = 1002
+
+		local function isKeyValid(key)
+			if not key or key == "" then return false, "Empty key" end
+
+			-- remote validation if endpoint configured
+			if Config.KeyEndpoint and Config.KeyEndpoint ~= "" then
+				local ok, res = pcall(function()
+					local sep = (string.find(Config.KeyEndpoint, "?", 1, true) and "&") or "?"
+					return game:HttpGet(Config.KeyEndpoint .. sep .. "key=" .. HttpService:UrlEncode(key))
+				end)
+				if not ok or not res then
+					return false, "Network/endpoint error"
+				end
+
+				-- try parse JSON
+				local ok2, dec = pcall(function() return HttpService:JSONDecode(res) end)
+				if ok2 and type(dec) == "table" then
+					if dec.valid == true or dec.status == "ok" or dec.success == true then
+						return true
+					end
+					return false, dec.message or "Invalid key"
+				else
+					-- fallback: check simple string responses
+					local lr = string.lower(res)
+					if lr:find("valid") or lr:find("ok") or lr:find("success") then
+						return true
+					end
+					return false, "Invalid key"
+				end
+			end
+
+			-- local list validation
+			for i,v in ipairs(Config.ValidKeys or {}) do
+				if tostring(v) == tostring(key) then
+					return true
+				end
+			end
+
+			return false, "Key not found"
+		end
+
+		Submit.MouseButton1Click:Connect(function()
+			local key = KeyBox.Text
+			local ok, err = isKeyValid(key)
+			if ok then
+				-- hide overlay and allow UI to continue
+				Compkiller:_Animation(KeyOverlay, TweenInfo.new(0.18), { BackgroundTransparency = 1 })
+				task.delay(0.18, function()
+					KeyOverlay:Destroy()
+				end)
+				-- store validated key in WindowArgs for scripts to check
+				WindowArgs.ValidatedKey = key
+				return
+			else
+				Message.Text = ("Invalid key: %s"):format(err or "")
+				Message.TextColor3 = Color3.fromRGB(255,120,120)
+				return
+			end
+		end)
+
+		-- prevent interactions underneath while present
+		KeyOverlay.InputBegan:Connect(function() end)
+	end
 
 	local TabFrameBaseTrans = 0.25;
 
