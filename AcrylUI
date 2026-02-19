@@ -6127,22 +6127,22 @@ end;
 function Compkiller:SetTheme(name)
     if name == "Default" then
         Compkiller.Colors = {
-            Highlight = Color3.fromRGB(230, 230, 230),
-            Toggle = Color3.fromRGB(200, 200, 200),
-            Risky = Color3.fromRGB(255, 95, 95),
+            Highlight = Color3.fromRGB(255, 255, 255),
+            Toggle = Color3.fromRGB(220, 220, 220),
+            Risky = Color3.fromRGB(255, 80, 80),
 
-            BGDBColor = Color3.fromRGB(32, 34, 37), -- brighter than old 18
-            BlockColor = Color3.fromRGB(40, 42, 46),
-            BlockBackground = Color3.fromRGB(47, 49, 54),
+            BGDBColor = Color3.fromRGB(0, 0, 0),
+            BlockColor = Color3.fromRGB(10, 10, 10),
+            BlockBackground = Color3.fromRGB(18, 18, 18),
 
-            StrokeColor = Color3.fromRGB(70, 72, 76),
-            HighStrokeColor = Color3.fromRGB(95, 97, 101),
+            StrokeColor = Color3.fromRGB(40, 40, 40),
+            HighStrokeColor = Color3.fromRGB(65, 65, 65),
 
-            DropColor = Color3.fromRGB(44, 47, 51),
-            MouseEnter = Color3.fromRGB(60, 63, 68),
+            DropColor = Color3.fromRGB(15, 15, 15),
+            MouseEnter = Color3.fromRGB(30, 30, 30),
 
             SwitchColor = Color3.fromRGB(255, 255, 255),
-            LineColor = Color3.fromRGB(110, 110, 110),
+            LineColor = Color3.fromRGB(85, 85, 85),
         }
     elseif name == "Soft Dark" then
         Compkiller.Colors = {
@@ -6162,25 +6162,6 @@ function Compkiller:SetTheme(name)
 
             SwitchColor = Color3.fromRGB(220, 220, 220),
             LineColor = Color3.fromRGB(130, 130, 130),
-        }
-    elseif name == "AMOLED" then
-        Compkiller.Colors = {
-            Highlight = Color3.fromRGB(255, 255, 255),
-            Toggle = Color3.fromRGB(220, 220, 220),
-            Risky = Color3.fromRGB(255, 80, 80),
-
-            BGDBColor = Color3.fromRGB(0, 0, 0),
-            BlockColor = Color3.fromRGB(10, 10, 10),
-            BlockBackground = Color3.fromRGB(18, 18, 18),
-
-            StrokeColor = Color3.fromRGB(40, 40, 40),
-            HighStrokeColor = Color3.fromRGB(65, 65, 65),
-
-            DropColor = Color3.fromRGB(15, 15, 15),
-            MouseEnter = Color3.fromRGB(30, 30, 30),
-
-            SwitchColor = Color3.fromRGB(255, 255, 255),
-            LineColor = Color3.fromRGB(85, 85, 85),
         }
     elseif name == "Ocean" then
         Compkiller.Colors = {
